@@ -2,6 +2,7 @@ let font;
 let name;
 let vehicles = [];
 let input;
+let size;
 
 function preload() {
     font = loadFont("https://srv-file7.gofile.io/download/MadZ6T/ProductSans-Regular.ttf");
@@ -11,8 +12,12 @@ function setup() {
     createCanvas(600, 300);
 
     name = "Charlie";
+    size = 150;
     textFont(font);
-    textSize(150);
+
+    do {
+        size -= 10;
+    } while(textWidth(name) > width - 50);
 
     input = createInput();
     input.input(textChanged);
@@ -32,7 +37,14 @@ function mouseDragged() {
 function textChanged() {
     name = input.value();
 
-    let points = font.textToPoints(name, width / 2 - textWidth(name) / 2, 200, 150, { sampleFactor: 0.75 });
+    size = 300;
+
+    do {
+        size -= 10;
+        textSize(size);
+    } while(textWidth(name) > width - 50);
+
+    let points = font.textToPoints(name, width / 2 - textWidth(name) / 2, 200, size, { sampleFactor: 0.75 });
 
     vehicles = [];
 
