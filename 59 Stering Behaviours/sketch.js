@@ -3,6 +3,8 @@ let name;
 let vehicles = [];
 let input;
 let size;
+let numDots;
+let numDotsSlider;
 
 function preload() {
     font = loadFont("https://lawlesscs.github.io/Steering/ProductSans-Regular.ttf");
@@ -11,7 +13,7 @@ function preload() {
 function setup() {
     createCanvas(600, 300);
 
-    name = "Enter text below:";
+    name = "Charlie";
     size = 150;
     textFont(font);
 
@@ -22,6 +24,9 @@ function setup() {
     input = createInput();
     input.input(textChanged);
     input.value(name);
+
+    numDotsSlider = createSlider(5, 750, 350);
+    numDotsSlider.input(numDotsChanged);
 
     textChanged();
 }
@@ -34,6 +39,11 @@ function mouseDragged() {
     explode();
 }
 
+function numDotsChanged() {
+    numDots = numDotsSlider.value() / 1000;
+    textChanged();
+}
+
 function textChanged() {
     name = input.value();
 
@@ -44,7 +54,7 @@ function textChanged() {
         textSize(size);
     } while(textWidth(name) > width - 50);
 
-    let points = font.textToPoints(name, width / 2 - textWidth(name) / 2, 200, size, { sampleFactor: 0.75 });
+    let points = font.textToPoints(name, width / 2 - textWidth(name) / 2, 200, size, { sampleFactor: numDots });
 
     vehicles = [];
 
