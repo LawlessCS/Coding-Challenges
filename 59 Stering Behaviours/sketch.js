@@ -11,7 +11,7 @@ function preload() {
 function setup() {
     createCanvas(600, 300);
 
-    name = "Charlie";
+    name = "Enter text below:";
     size = 150;
     textFont(font);
 
