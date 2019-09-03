@@ -1,6 +1,7 @@
 let font;
 let name;
 let vehicles = [];
+let input;
 
 function preload() {
     font = loadFont("https://srv-file7.gofile.io/download/MadZ6T/ProductSans-Regular.ttf");
@@ -13,12 +14,11 @@ function setup() {
     textFont(font);
     textSize(150);
 
-    let points = font.textToPoints(name, width / 2 - textWidth(name) / 2, 200, 150, { sampleFactor: 0.75 });
+    input = createInput();
+    input.input(textChanged);
+    input.value(name);
 
-    for (let pt of points) {
-        var vehicle = new Vehicle(pt.x, pt.y);
-        vehicles.push(vehicle);
-    }
+    textChanged();
 }
 
 function mousePressed() {
@@ -27,6 +27,19 @@ function mousePressed() {
 
 function mouseDragged() {
     explode();
+}
+
+function textChanged() {
+    name = input.value();
+
+    let points = font.textToPoints(name, width / 2 - textWidth(name) / 2, 200, 150, { sampleFactor: 0.75 });
+
+    vehicles = [];
+
+    for (let pt of points) {
+        var vehicle = new Vehicle(pt.x, pt.y);
+        vehicles.push(vehicle);
+    }
 }
 
 function explode() {
