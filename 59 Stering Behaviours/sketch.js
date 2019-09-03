@@ -5,7 +5,7 @@ let input;
 let size;
 
 function preload() {
-    font = loadFont("https://srv-file7.gofile.io/download/MadZ6T/ProductSans-Regular.ttf");
+    font = loadFont("https://lawlesscs.github.io/Steering/ProductSans-Regular.ttf");
 }
 
 function setup() {
