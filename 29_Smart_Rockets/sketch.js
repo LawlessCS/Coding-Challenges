@@ -8,7 +8,7 @@ let lifeDisplay;
 function setup() {
     createCanvas(400, 300);
 
-    populationSize = 25;
+    populationSize = 10;
     rocketLifespan = 200;
     target = createVector(width / 2, 50);
     population = new Population(populationSize, rocketLifespan, target);
