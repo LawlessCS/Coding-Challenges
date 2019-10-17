@@ -7,7 +7,7 @@ let numDots;
 let numDotsSlider;
 
 function preload() {
-    font = loadFont("https://lawlesscs.github.io/Coding-Challenges/59_Steering-Behaviours/ProductSans-Regular.ttf");
+    font = loadFont("https://lawlesscs.github.io/Coding-Challenges/059_Steering-Behaviours/ProductSans-Regular.ttf");
 }
 
 function setup() {
