@@ -8,10 +8,10 @@ let particles = [];
 let pegs = [];
 let bounds = [];
 
-let pop;
+let popSound;
 
 function preload() {
-    pop = loadSound("../media/pop.wav");
+    popSound = loadSound("./media/pop.wav");
 }
 
 function setup() {
@@ -114,5 +114,5 @@ function newParticle() {
 }
 
 function mousePressed() {
-    pop.play();
+    popSound.play();
 }
