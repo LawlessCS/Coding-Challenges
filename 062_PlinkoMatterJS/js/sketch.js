@@ -1,5 +1,6 @@
 let Engine = Matter.Engine;
 let World = Matter.World;
+let Events = Matter.Events;
 let Bodies = Matter.Bodies;
 
 let engine;
@@ -22,6 +23,9 @@ function setup() {
     engine = Engine.create();
     world = engine.world;
 
+    // Add function to collision event
+    Events.on(engine, "collisionStart", collision);
+
     // Set layout for pegs
     let rows = 15;
     let cols = 15;
@@ -41,8 +45,8 @@ function draw() {
     // Clear screen with #515151
     background(0);
 
-    // Create new particle every 40 frames
-    if (frameCount % 40 == 0) {
+    //Create new particle every 40 frames
+    if (frameCount % 30 == 0) {
         newParticle();
     }
 
@@ -113,6 +117,15 @@ function newParticle() {
     particles.push(new Particle(300 + random(-radius, radius), -radius, radius));
 }
 
-function mousePressed() {
-    popSound.play();
+function collision(evt) {
+    let pairs = evt.pairs;
+
+    for (let i = 0; i < pairs.length; i++) {
+        let labelA = pairs[i].bodyA.label;
+        let labelB = pairs[i].bodyB.label;
+
+        if (labelA == "particle" && labelB == "peg" || labelB == "particle" && labelA == "peg") {
+            popSound.play();
+        }
+    }
 }

@@ -11,6 +11,8 @@ class Boundary {
         this.body = Bodies.rectangle(newX, newY, this.width, this.height, {
             isStatic: true
         });
+        // Set label of body to boundary
+        this.body.label = "boundary";
         // Add boundary body to world
         World.add(world, this.body);
     }

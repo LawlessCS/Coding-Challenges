@@ -4,6 +4,8 @@ class Particle {
         this.radius = r;
         // Set particle body to a physics circle with bounce and friction
         this.body = Bodies.circle(x, y, this.radius, { restitution: 0.6, density: 0.5 });
+        // Set label of body to particle
+        this.body.label = "particle";
         // Add particle body to world
         World.add(world, this.body);
     }

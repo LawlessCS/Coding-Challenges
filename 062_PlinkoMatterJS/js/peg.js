@@ -3,6 +3,8 @@ class Peg {
         this.radius = r;
         // Set peg body to physics circle and make static
         this.body = Bodies.circle(x, y, this.radius, { isStatic: true, friction: 0.75 });
+        // Set label of body to peg
+        this.body.label = "peg";
         // Add peg body to world
         World.add(world, this.body);
     }
