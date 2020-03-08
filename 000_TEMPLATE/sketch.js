@@ -2,6 +2,7 @@ let counter = 0;
 
 function setup() {
     createCanvas(400, 400);
+	console.log("P5 Loaded!");
 }
 
 function draw() {
