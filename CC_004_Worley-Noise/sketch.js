@@ -43,10 +43,10 @@ function draw() {
                 distances.sort((a, b) => a - b);
 
                 let r = map(distances[N - 1], 0, rValue * 0.5, 0, 255);
-                let g = map(distances[N], 0, rValue, 0, 255);
-                let b = map(distances[N + 1], 0, rValue * 1.5, 0, 255);
+                //let g = map(distances[N], 0, rValue, 0, 255);
+                //let b = map(distances[N + 1], 0, rValue * 1.5, 0, 255);
 
-                setPixel(index, getColour(r, g, b));
+                setPixel(index, getColour(r));
             }
         }
         // Update canvas pixels to match 'pixels' array
